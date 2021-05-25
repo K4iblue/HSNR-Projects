@@ -1,0 +1,30 @@
+{
+   "faae36dd-3625-4cc5-a1a8-e2d88ed4bac7": {
+      "id_m": "faae36dd-3625-4cc5-a1a8-e2d88ed4bac7",
+      "name": "Klaps",
+      "vorname": "Kai",
+      "akagrad": "Abitur",
+      "taetigkeit": "Student"
+   },
+   "52403af3-5f8e-4c73-9d91-8c9d368d718d": {
+      "id_m": "52403af3-5f8e-4c73-9d91-8c9d368d718d",
+      "name": "Schlitter",
+      "vorname": "Marvin",
+      "akagrad": "Master",
+      "taetigkeit": "Meister Programmierer"
+   },
+   "c583a7f1-c6ce-4265-bafd-b8f5d375b4fc": {
+      "id_m": "c583a7f1-c6ce-4265-bafd-b8f5d375b4fc",
+      "name": "Wiese",
+      "vorname": "Matthias",
+      "akagrad": "Bachelor",
+      "taetigkeit": "WEB Engineer"
+   },
+   "a95ee53d-d4a2-4ddb-8462-06b9af957342": {
+      "id_m": "a95ee53d-d4a2-4ddb-8462-06b9af957342",
+      "name": "Test",
+      "vorname": "Test",
+      "akagrad": "Test",
+      "taetigkeit": "Test"
+   }
+}

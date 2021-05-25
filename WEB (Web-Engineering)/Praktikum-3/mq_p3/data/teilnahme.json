@@ -1,0 +1,17 @@
+{
+   "5fde830f-ff36-4478-98dd-c5ad4923a25d": {
+      "id_w": "07090655-84d8-4631-b742-aecfe44061da",
+      "id_m": "faae36dd-3625-4cc5-a1a8-e2d88ed4bac7",
+      "status": "erfolgreich"
+   },
+   "1d96db4f-d3a6-4859-a0cf-3e12bb78d670": {
+      "id_w": "07090655-84d8-4631-b742-aecfe44061da",
+      "id_m": "52403af3-5f8e-4c73-9d91-8c9d368d718d",
+      "status": "erfolgreich"
+   },
+   "dc2545ac-8961-4cdc-9865-09e29ad6a3be": {
+      "id_w": "07090655-84d8-4631-b742-aecfe44061da",
+      "id_m": "c583a7f1-c6ce-4265-bafd-b8f5d375b4fc",
+      "status": "nicht erfolgreich"
+   }
+}

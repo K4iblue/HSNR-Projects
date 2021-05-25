@@ -1,0 +1,23 @@
+{
+   "f1473217-3e2b-48fd-af08-c2b433178aca": {
+      "id_w": "795ddc2b-f4f0-4f4e-9a4d-771a9f9f5fab",
+      "bezeichnung_z": "Zertifikat 1",
+      "beschreibung_z": "Zertifikat 1",
+      "berechtigtzu_z": "Zertifikat 1",
+      "id_z": "f1473217-3e2b-48fd-af08-c2b433178aca"
+   },
+   "16f7d42e-fcd9-4475-bff3-f50af0b39d1d": {
+      "id_w": "55f89ad1-6c78-4a12-805e-b48670298e9a",
+      "bezeichnung_z": "Zertifikat 2",
+      "beschreibung_z": "Zertifikat 2",
+      "berechtigtzu_z": "Zertifikat 2",
+      "id_z": "16f7d42e-fcd9-4475-bff3-f50af0b39d1d"
+   },
+   "be823822-92bd-4d1b-923d-bb8809708249": {
+      "id_w": "07090655-84d8-4631-b742-aecfe44061da",
+      "bezeichnung_z": "Zertifikat 3",
+      "beschreibung_z": "Zertifikat 3",
+      "berechtigtzu_z": "Zertifikat 3",
+      "id_z": "be823822-92bd-4d1b-923d-bb8809708249"
+   }
+}
