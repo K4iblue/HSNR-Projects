@@ -1,1 +1,1 @@
-# hsnr-projects
+# Programme die im Rahmen meines Informatik Studiums an der Hochschule Niederrhein erstellt wurden.
