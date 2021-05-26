@@ -27,17 +27,17 @@ struct mystack_s {
 mystack_t* createStack() {
 
     // Speicher für stack reservieren
-    mystack_t* stack = malloc(sizeof(struct mystack_t));
+    mystack_t* stack = malloc(sizeof(struct mystack_s));
 
     // Fehlerbehandlung, falls speicher reservieren nicht klappt
     if (stack == NULL) {
         printf("Could not allocate enough memory for a new stack");
-        return ALLOC_ERROR;
+        return NULL;
     }
     
     // Stack variablen initialisieren
     stack->top = NULL;
-    stack->error = NULL;
+    stack->error = OK;
 
     return stack;
 };
@@ -61,7 +61,7 @@ void push(mystack_t* stack, float value) {
     // Fehlerbehandlung, falls speicher reservieren nicht klappt
     if (element == NULL) {
         printf("Could not allocate enough memory for a new element");
-        return ALLOC_ERROR;
+        return;
     }
 
     // Element Variablen initialisieren
@@ -88,19 +88,16 @@ void pop(mystack_t* stack) {
     // Fehlerbehandlung, falls Stack leer ist
     if (isEmpty(stack) == EMPTY_STACK) {
         stack->error = EMPTY_STACK;
-        return 1;
     }
 
     // Aktuelles Top Element zwischenspeichern, damit es später entfernt werden kann
     struct node* toPop = stack->top;
-    float value = toPop->value;
     
     // Neues Top Element setzen
-    stack->top->next;
+    stack->top = toPop->next;
 
-    // Speicher vom alten Top Element freigeben und Wert ausgeben
+    // Speicher vom alten Top Element freigeben
     free(toPop);
-    return(value);
 };
 
 // liefert den Inhalt der Fehlervariablen
@@ -110,15 +107,8 @@ char getError(mystack_t* stack) {
 
 // zerstört den Stack und gibt belegten Speicherplatz frei
 void destroyStack(mystack_t* stack) {
-    
-    // Fehlerbehandlung, falls Stack leer ist
-    if (isEmpty(stack) == EMPTY_STACK) {
-        stack->error = EMPTY_STACK;
-        return 1;
-    }
-
     // Solange der Stack noch nicht leer ist
-    while (isEmpty(stack) != OK) {
+    while (isEmpty(stack) != EMPTY_STACK) {
         struct node* toDestroy = stack->top;
 
         // Neues Top Element setzen

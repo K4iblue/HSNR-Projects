@@ -1,0 +1,3 @@
+﻿  bla.c
+MSVCRTD.lib(exe_winmain.obj) : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "_WinMain@16" in Funktion ""int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)".
+C:\Github\hsnr-projects\PE2 (Programmentwicklung 2)\Woche 1\modularer-stack\Debug\Woche 1 - Modularer Stack.exe : fatal error LNK1120: 1 nicht aufgelöste Externe

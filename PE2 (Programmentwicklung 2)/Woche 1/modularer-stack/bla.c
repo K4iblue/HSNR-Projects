@@ -5,7 +5,7 @@
 #include "mystack.h"
 
 // ===================================================================
-int main(void) {
+int bla(void) {
     // TODO
 
     return 0;
