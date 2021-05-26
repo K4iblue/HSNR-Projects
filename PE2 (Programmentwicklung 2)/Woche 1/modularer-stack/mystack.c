@@ -109,14 +109,16 @@ char getError(mystack_t* stack) {
 
 // zerstört den Stack und gibt belegten Speicherplatz frei
 void destroyStack(mystack_t* stack) {
-    // Solange der Stack noch nicht leer ist
-    while (isEmpty(stack) != EMPTY_STACK) {
-        struct node* toDestroy = stack->top;
 
+    struct node* toDestroy = stack->top;
+
+    // Solange der Stack noch nicht leer ist
+    while ((toDestroy = stack->top) != NULL) {
         // Neues Top Element setzen
-        stack->top->next;
+        stack->top = stack->top->next;
 
         // Speicher vom alten Top Element freigeben und Wert ausgeben
         free(toDestroy);
     }
+    return;
 };

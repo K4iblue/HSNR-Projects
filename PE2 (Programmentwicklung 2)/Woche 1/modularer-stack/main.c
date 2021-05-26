@@ -74,7 +74,7 @@ int main(void) {
     // Ergebnis ausgeben und Stack zerstören
     printf("Ergebnis: %f \n", top(stack));
     system("Pause");
-    //destroyStack(stack);
+    destroyStack(stack);
     return 0;
 }
 
