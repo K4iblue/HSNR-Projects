@@ -71,7 +71,7 @@ char test03(void) {
 }
 
 // ===================================================================
-int main(void) {
+int test(void) {
 
     if (test01() == OK)
         printf("test01 passed\n");

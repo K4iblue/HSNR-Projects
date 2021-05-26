@@ -23,7 +23,7 @@ void push(mystack_t *stack, float value);
 // liefert das zuletzt eingefügte Element des Stacks s
 float top(mystack_t *stack);
 // entfernt das zuletzt eingefügte Element vom Stack s
-void pop(mystack_t *stack);
+float pop(mystack_t *stack);
 // liefert den Inhalt der Fehlervariablen
 char getError(mystack_t *stack);
 // zerstört den Stack und gibt belegten Speicherplatz frei

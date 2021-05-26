@@ -83,7 +83,7 @@ float top(mystack_t* stack) {
 };
 
 // entfernt das zuletzt eingefügte Element vom Stack s
-void pop(mystack_t* stack) {
+float pop(mystack_t* stack) {
     
     // Fehlerbehandlung, falls Stack leer ist
     if (isEmpty(stack) == EMPTY_STACK) {
@@ -92,12 +92,14 @@ void pop(mystack_t* stack) {
 
     // Aktuelles Top Element zwischenspeichern, damit es später entfernt werden kann
     struct node* toPop = stack->top;
+    float value = toPop->value;
     
     // Neues Top Element setzen
     stack->top = toPop->next;
 
     // Speicher vom alten Top Element freigeben
     free(toPop);
+    return value;
 };
 
 // liefert den Inhalt der Fehlervariablen
