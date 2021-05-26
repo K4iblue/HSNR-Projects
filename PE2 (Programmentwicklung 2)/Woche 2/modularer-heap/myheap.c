@@ -2,9 +2,12 @@
 // heap.c
 // ===================================================================
 
+// Minheap
+
 #include "myheap.h"
 #include <stdio.h>
 #include <stdlib.h>
+
 
 struct heap_s {
 	// Pointer zum Heap Array
@@ -19,12 +22,12 @@ struct heap_s {
 	// Indexvariable
 	int index;
 
-	// Fehlervariable
-	char error;
+// Fehlervariable
+char error;
 };
 
 heap_t* createHeap() {
-	
+
 	// Speicher für Heap reservieren, calloc setzt den reservierten speicher auf Nullen
 	heap_t* h = calloc(1, sizeof(heap_t));
 
@@ -35,7 +38,7 @@ heap_t* createHeap() {
 	}
 
 	// Heap Variablen initialisieren
-	h->values = (int *) malloc(sizeof(int)*h->capacity);
+	h->values = (int*)malloc(sizeof(int) * h->capacity);
 	h->capacity = 50;
 	h->size = 0;
 	h->index = 0;
@@ -57,7 +60,7 @@ char insert(heap_t* h, int val) {
 	// Falls der heap keine kapaziät mehr hat, muss dieser zuerst vergrößert werden,
 	if (h->size == h->capacity) {
 		h->capacity *= 2;
-		h->values = (int*) realloc(h->values, h->capacity * sizeof(int));
+		h->values = (int*)realloc(h->values, h->capacity * sizeof(int));
 	}
 
 	// Falls heap noch leer ist
@@ -78,17 +81,36 @@ char insert(heap_t* h, int val) {
 
 int minimum(heap_t* h) {
 
-	// Fehlerbehandlung
+	// Falls Heap leer ist, Fehlerbehandlung
 	if (h->size <= 0) {
 		h->error = EMPTY_HEAP;
 		return -1;
 	}
 
+	// Root Element ist immer das kleinste Element
 	return h->values[0];
 };
 
 char extractMin(heap_t* h) {
+	// Falls Heap leer ist, Fehlerbehandlung
+	if (h->size <= 0) {
+		h->error = EMPTY_HEAP;
+		return -1;
+	}
 
+	// Wenn der Heap nur einen Wert hat
+	if (h->size == 1) {
+		h->size--;
+		return h->values[0];
+	}
+
+	// kleinsten Wert speichern
+	int root = h->values[0];
+	h->values[0] = h->values[h->size-1];
+	h->size--;
+	heapify(h, h->size, 0);
+
+	return root;
 };
 
 char getError(heap_t* h) {
@@ -96,7 +118,7 @@ char getError(heap_t* h) {
 };
 
 void toString(heap_t* h, char* str, int maxlen) {
-
+	printf("Test");
 };
 
 // Um die Heap Bedingungen immer zu erfüllen brauchen wir zwei Hilfsfunktionen:
@@ -109,6 +131,27 @@ void swap(heap_t* h, int pos1, int pos2) {
 	h->values[pos2] = temp;
 };
 
+// Great resource: https://www.geeksforgeeks.org/binary-heap/
 void heapify(heap_t* h, int size, int index) {
 
+	// Root Element
+	int smallest = index;	
+	int leftChild = 2 * index + 1;
+	int rightChild = 2 * index + 2;
+
+	// leftChild ist kleiner als smallest
+	if (leftChild < size && h->values[leftChild] > h->values[smallest]) {
+		smallest = leftChild;
+	}
+
+	// rightChild ist kleiner als smallest
+	if (rightChild < size && h->values[rightChild] > h->values[smallest]) {
+		smallest = rightChild;
+	}
+
+	// Position der Werte wechseln und funktion erneut aufrufen
+	if (smallest != index) {
+		swap(h, index, smallest);
+		heapify(h, size, smallest);
+	}
 };
