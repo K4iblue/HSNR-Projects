@@ -1,13 +1,16 @@
 // ===================================================================
+// Minheap
 // heap.c
 // ===================================================================
 
-// Minheap
 
-#include "myheap.h"
+
 #include <stdio.h>
 #include <stdlib.h>
+#include "myheap.h"
 
+void swap(heap_t* h, int pos1, int pos2);
+void heapify(heap_t* h, int size, int index);
 
 struct heap_s {
 	// Pointer zum Heap Array

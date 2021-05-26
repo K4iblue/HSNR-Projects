@@ -24,7 +24,7 @@ char test01(void) {
 
 // *******************************************************************
 char test02(void) {
-    char res = OK;  // Ändern
+    char res = OK;
     char str[80] = "";
     heap_t* h;
 
