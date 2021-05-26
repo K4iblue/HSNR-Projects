@@ -1,5 +1,5 @@
 // ===================================================================
-// mystack.c (Stack realisiert mit dynamischen Array)
+// mystack.c (Stack realisiert als Linked List)
 // ===================================================================
 
 #include <stdlib.h>
@@ -8,11 +8,11 @@
 
 // ===================================================================
 struct node {
-    // Zeiger auf nächste Position
-    struct node* next;
-
     // Wert speichern
     float value;
+
+    // Zeiger auf nächste Position
+    struct node* next;
 };
 
 struct mystack_s {
@@ -20,7 +20,7 @@ struct mystack_s {
     struct node* top;
 
     /// Speichert einen Fehler-Code für die zuletzt ausgeführte Operation
-    char error; // 'E' = Empty
+    char error;
 };
 
 // erzeugt einen leeren Stack
@@ -56,7 +56,7 @@ char isEmpty(mystack_t* stack) {
 void push(mystack_t* stack, float value) {
    
     // Speicher für element reservieren
-    struct node* element = malloc(sizeof(struct node*));
+    struct node* element = (struct node*)malloc(sizeof(struct node));
 
     // Fehlerbehandlung, falls speicher reservieren nicht klappt
     if (element == NULL) {
