@@ -121,7 +121,20 @@ char getError(heap_t* h) {
 };
 
 void toString(heap_t* h, char* str, int maxlen) {
-	printf("Test");
+	//char* string = (char*)malloc(sizeof(maxlen*2));
+
+	for (int i = 0; i < h->size; i++) {
+		char tmp[2];
+
+		if (i > 0) {
+			str[maxlen] = ',';
+			str[maxlen + 1] = ' ';
+			str[maxlen + 2] = '\0';
+		}
+		sprintf(tmp, "%d", h->values[i]);
+	}
+
+	//return string;
 };
 
 // Um die Heap Bedingungen immer zu erfüllen brauchen wir zwei Hilfsfunktionen:

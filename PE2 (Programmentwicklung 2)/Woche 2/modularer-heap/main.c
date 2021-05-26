@@ -34,13 +34,13 @@ char test02(void) {
     insert(h, 3);
     insert(h, 2);
     insert(h, 1);
-    /*
+    
     toString(h, str, 80);
     // printf("%s\n", str);
     if (strcmp(str, "1, 2, 4, 5, 3") == 0)
         res = OK;
     else res = !OK;
-    */
+    
     destroyHeap(h);
     return res;
 }

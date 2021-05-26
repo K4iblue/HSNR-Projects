@@ -27,8 +27,8 @@ char getError(heap_t *h);
 void toString(heap_t *h, char *str, int maxlen);
 
 // Hilfsfunktionen
-//void swap(heap_t* h, int pos1, int pos2);
-//void heapify(heap_t* h, int size, int index);
+void swap(heap_t* h, int pos1, int pos2);
+void heapify(heap_t* h, int size, int index);
 
 #endif
 
