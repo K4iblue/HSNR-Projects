@@ -1,11 +1,16 @@
+# Python speciific files
 __pycache__/
+
+# Visual Studio specific files
 .vs/
 Debug/
 x64/
 x86/
-.zip
 CppProperties.json
 .sln
 .vcxproj
 .vcxproj.filters
 .vcxproj.user
+
+# Other files
+.zip
