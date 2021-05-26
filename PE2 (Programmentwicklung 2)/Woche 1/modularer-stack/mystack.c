@@ -3,18 +3,21 @@
 // ===================================================================
 
 #include <stdlib.h>
+#include <stdio.h>
 #include "mystack.h"
 
 // ===================================================================
-struct mystack_s {
-    // Top Position
-    int* top;
-
+struct node {
     // Zeiger auf nächste Position
-    int* next;
+    struct node* next;
 
     // Wert speichern
     float value;
+};
+
+struct mystack_s {
+    // Top Position
+    struct node* top;
 
     /// Speichert einen Fehler-Code für die zuletzt ausgeführte Operation
     char error; // 'E' = Empty
@@ -23,44 +26,105 @@ struct mystack_s {
 // erzeugt einen leeren Stack
 mystack_t* createStack() {
 
+    // Speicher für stack reservieren
+    mystack_t* stack = malloc(sizeof(struct mystack_t));
+
+    // Fehlerbehandlung, falls speicher reservieren nicht klappt
+    if (stack == NULL) {
+        printf("Could not allocate enough memory for a new stack");
+        return ALLOC_ERROR;
+    }
+    
+    // Stack variablen initialisieren
+    stack->top = NULL;
+    stack->error = NULL;
+
+    return stack;
 };
 
 // prüft, ob der Stack s leer ist
 char isEmpty(mystack_t* stack) {
-
+    if (stack->top == NULL) {
+        return EMPTY_STACK;
+    }
+    else {
+        return OK;
+    }
 };
 
 // legt den Wert value auf den Stack s
 void push(mystack_t* stack, float value) {
+   
+    // Speicher für element reservieren
+    struct node* element = malloc(sizeof(struct node*));
 
+    // Fehlerbehandlung, falls speicher reservieren nicht klappt
+    if (element == NULL) {
+        printf("Could not allocate enough memory for a new element");
+        return ALLOC_ERROR;
+    }
+
+    // Element Variablen initialisieren
+    element->value = value;
+    element->next = stack->top;
+    stack->top = element;  
 };
 
 // liefert das zuletzt eingefügte Element des Stacks s
 float top(mystack_t* stack) {
 
-    // Fehlerbehandlung
-    if (isEmpty(stack) == '-1') {
-        stack->error = 'E';
+    // Fehlerbehandlung, falls Stack leer ist
+    if (isEmpty(stack) == EMPTY_STACK) {
+        stack->error = EMPTY_STACK;
         return 1;
     }
+
+    return stack->top->value;
 };
 
 // entfernt das zuletzt eingefügte Element vom Stack s
 void pop(mystack_t* stack) {
     
-    // Fehlerbehandlung
-    if (isEmpty(stack) == '-1') {
-        stack->error = 'E';
+    // Fehlerbehandlung, falls Stack leer ist
+    if (isEmpty(stack) == EMPTY_STACK) {
+        stack->error = EMPTY_STACK;
         return 1;
     }
+
+    // Aktuelles Top Element zwischenspeichern, damit es später entfernt werden kann
+    struct node* toPop = stack->top;
+    float value = toPop->value;
+    
+    // Neues Top Element setzen
+    stack->top->next;
+
+    // Speicher vom alten Top Element freigeben und Wert ausgeben
+    free(toPop);
+    return(value);
 };
 
 // liefert den Inhalt der Fehlervariablen
 char getError(mystack_t* stack) {
-
+    return(EMPTY_STACK);
 };
 
 // zerstört den Stack und gibt belegten Speicherplatz frei
 void destroyStack(mystack_t* stack) {
+    
+    // Fehlerbehandlung, falls Stack leer ist
+    if (isEmpty(stack) == EMPTY_STACK) {
+        stack->error = EMPTY_STACK;
+        return 1;
+    }
 
+    // Solange der Stack noch nicht leer ist
+    while (isEmpty(stack) != OK) {
+        struct node* toDestroy = stack->top;
+
+        // Neues Top Element setzen
+        stack->top->next;
+
+        // Speicher vom alten Top Element freigeben und Wert ausgeben
+        free(toDestroy);
+    }
 };
