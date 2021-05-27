@@ -30,7 +30,6 @@ char error;
 };
 
 heap_t* createHeap() {
-
 	// Speicher für Heap reservieren, calloc setzt den reservierten speicher auf Nullen
 	heap_t* h = calloc(1, sizeof(heap_t));
 
@@ -41,43 +40,34 @@ heap_t* createHeap() {
 	}
 
 	// Heap Variablen initialisieren
-	h->values = (int*)malloc(sizeof(int) * h->capacity);
 	h->capacity = 50;
 	h->size = 0;
 	h->index = 0;
 	h->error = EMPTY_HEAP;
+	h->values = (int*)malloc(h->capacity * sizeof(int));
+
+	// Fehlerbehandlung
+	if (h->values == NULL) {
+		printf("Could not allocate enough memory for the values");
+		return NULL;
+	}
 
 	return h;
 };
 
-void destroyHeap(heap_t* h) {
-	// Zuerst werden die Values freigegeben
-	free(h->values);
-
-	// Dann der restliche Heap
-	free(h);
-};
-
 char insert(heap_t* h, int val) {
-
 	// Falls der heap keine kapaziät mehr hat, muss dieser zuerst vergrößert werden,
 	if (h->size == h->capacity) {
 		h->capacity *= 2;
 		h->values = (int*)realloc(h->values, h->capacity * sizeof(int));
 	}
-
-	// Falls heap noch leer ist
-	if (h->size == 0) {
-		h->values[0] = val;
-		h->size++;
-		h->error = OK;
-		return h->error;
-	}
-
+	
 	// Element am Ende einfügen
 	h->values[h->size] = val;
 	h->size++;
 	h->error = OK;
+
+	// TODO: Heapify fehlt noch
 
 	return h->error;
 };
@@ -135,6 +125,14 @@ void toString(heap_t* h, char* str, int maxlen) {
 	}
 
 	//return string;
+};
+
+void destroyHeap(heap_t* h) {
+	// Zuerst werden die Values freigegeben
+	free(h->values);
+
+	// Dann der restliche Heap
+	free(h);
 };
 
 // Um die Heap Bedingungen immer zu erfüllen brauchen wir zwei Hilfsfunktionen:

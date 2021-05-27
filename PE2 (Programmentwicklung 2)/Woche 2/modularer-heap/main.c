@@ -24,7 +24,7 @@ char test01(void) {
 
 // *******************************************************************
 char test02(void) {
-    char res = OK;
+    char res;
     char str[80] = "";
     heap_t* h;
 
@@ -36,7 +36,7 @@ char test02(void) {
     insert(h, 1);
     
     toString(h, str, 80);
-    // printf("%s\n", str);
+    // printf("Str: %s\n", str);
     if (strcmp(str, "1, 2, 4, 5, 3") == 0)
         res = OK;
     else res = !OK;
