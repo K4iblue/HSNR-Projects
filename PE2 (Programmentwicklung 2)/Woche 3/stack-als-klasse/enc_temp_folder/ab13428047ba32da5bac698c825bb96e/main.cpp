@@ -15,17 +15,23 @@ using namespace std;
 // -------------------------------------------------------------------
 int main(void) {
     char ausdruck[] = "20 1 2 + 3 * -";
-    char* token;
+    char *token;
     Stack s;
-
-    // TODO
 
     token = strtok(ausdruck, " ");
     while (token != NULL) {
+        printf("%s \n", token);
+
+        // Falls der Token ein Operator ist
+        if (token == "+" || "-" || "*" || "/") {
+            cout << "Klappt" << endl;
+        }
         float wert = atof(token);
 
         token = strtok(NULL, " ");
     }
 
+
+    system("Pause");
     return 0;
 }

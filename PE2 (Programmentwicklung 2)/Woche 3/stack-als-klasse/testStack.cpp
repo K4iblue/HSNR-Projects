@@ -89,7 +89,7 @@ bool test07() {
 }
 
 //********************************************************************
-int main(void) {
+int Testmain(void) {
     bool ok = true;
 
     if (ok) {
