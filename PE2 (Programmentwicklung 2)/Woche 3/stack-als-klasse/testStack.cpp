@@ -138,6 +138,8 @@ int main(void) {
         cout << "\nTest passed\n";
     else cout << "\n!!! Test failed !!!\n";
 
+    system("Pause");
+
     return 0;
 }
 
