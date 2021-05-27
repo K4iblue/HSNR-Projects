@@ -12,7 +12,23 @@
 
 
 class Stack {
-    // TODO
+private:
+    int _top;
+    float* _values;
+    char _error;
+
+public:
+    // Konstruktor
+    Stack();
+    // Dekonstruktor
+    ~Stack();
+
+    // Methoden
+    bool isEmpty();
+    void push(float value);
+    float top();
+    float pop();
+    char getError();        
 };
 
 
